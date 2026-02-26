@@ -1,4 +1,5 @@
 apiVersion: v1
+
 # This file defines a Kubernetes Service for the Linkding application. 
 # The Service will expose the application on port 9090 and will route traffic 
 # to the pods that are labeled with "app: linkding". The Service type is set to 
@@ -12,3 +13,8 @@ spec:
   selector:
     app: linkding
   type: ClusterIP
+
+# This Service will allow other components within the Kubernetes cluster to communicate 
+# with the Linkding application using the defined port and selector.
+# Make sure to apply this configuration after deploying the Linkding application to 
+# ensure that the Service can properly route traffic to the pods.
