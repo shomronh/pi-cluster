@@ -76,7 +76,7 @@ data:
     no-autoupdate: true
 
     ingress:
-    - hostname: shomronh-cloudflare-tunnel.com
+    - hostname: ldpi.shomronh-cloudflare-tunnel.com
       # pay attebtion to the port 9090 which is the same we have defined
       # in the service.yaml file for linkding service
       service: http://linkding:9090
