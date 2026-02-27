@@ -12,22 +12,28 @@ spec:
       labels:
         app: linkding
     spec:
-      #  Set the security context for the entire pod to 
-      # run as www-data user and group (UID and GID 33) 
+      #  Set the security context for the entire pod to
+      # run as www-data user and group (UID and GID 33)
       # for proper file permissions
       securityContext:
         # www-data group ID for file permissions
-        fsGroup: 33 
+        fsGroup: 33
         # www-data user ID for running processes
-        runAsUser: 33 
+        runAsUser: 33
         # www-data group ID for running processes
-        runAsGroup: 33 
+        runAsGroup: 33
 
       containers:
         - name: linkding
           image: sissbruecker/linkding:1.31.0
           ports:
             - containerPort: 9090
+
+          envFrom:
+            # - configMapRef:
+            #     name: linkding-configmap
+            - secretRef:
+                name: linkding-container-env
 
           # Set the security context for the container to prevent privilege escalation
           securityContext:
