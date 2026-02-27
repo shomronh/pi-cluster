@@ -13,7 +13,12 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./apps/staging
+  
+  # prune: true will remove any resources that are no longer defined 
+  # in the source, which helps to keep the cluster clean and up-to-date 
+  # with the desired state defined in the Git repository. 
   prune: true
+  
   decryption:
     provider: sops
     secretRef:
