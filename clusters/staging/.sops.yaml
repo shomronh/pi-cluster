@@ -1,0 +1,7 @@
+creation_rules:
+  - path_regex: .*.yaml
+    # data that is expected to be encrypted
+    encrypted_regex: ^(data|stringData)$
+    # contains the age public key for encryption which is used to decrypt
+    # the secrets in this cluster
+    age: age1sc0lmje252zcv5fe2j0exc34tcuq4t7pnvspjltwnn099e0qwdqq9lw97z
