@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: linkding
+  # we dont need the namespace because we already 
+  # add that in the kustomization.yaml file
+  # namespace: linkding
+spec:
+  # how do i know which ingress name to use ? 
+  # we can run:
+  # k get ingressclasses.networking.k8s.io
+  # output: traefik etc..
+  ingressClassName: traefik
+  rules:
+    # the host can be anything, but it should match the host in 
+    # the cloudflare tunnel configuration, it can be a subdomain 
+    # of your main domain, or it can be a completely different domain
+    - host: lds.shomronh-cloudflare-tunnel.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: linkding
+                port:
+                  number: 9090
+            path: /
+            pathType: Prefix
